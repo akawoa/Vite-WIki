@@ -98,7 +98,7 @@ VALUES ('Fantasy','http://www.j1studios.com/wordpress/wp-content/uploads/AoT_S3.
 ('Science Fiction','https://geekculture.co/wp-content/uploads/2018/04/cowboy-bebop-886x500.jpg', 'Unlike its counterpart in fantasy, this genre emphasizes possibly fantastical advances in technology that can be explained using real-world science. Attention to details such as gravity, atmospheric pressure, and forces apply here. You will not find the power of friendship, probably...'),
 ('Slice of Life','https://i0.wp.com/www.monstersandcritics.com/wp-content/uploads/2020/04/Fruits-Basket-Season-3-release-date-Fruits-Basket-3rd-Season-Furuba-ending-2021.jpg?resize=780%2C439&ssl=1', 'Similar to a piece of cake, this genre is typically sweet and calming. It often portrays people going about their delay lives, good or otherwise, and the trials and tribulations of mundanity.'),
 ('Mecha','https://staticc.sportskeeda.com/editor/2022/03/b090b-16485410205928-1920.jpg', 'This is all about giant robots fighting things, typically other giant robots, but monsters and armies apply as well.'),
-('Romance','https://www.voicemag.uk/filesystem/user_cropped/article/1269b7e1530b61ea83328a5e5289db7785b961f5.jpeg','For the love of love, this genre is all about stomach butterflies, sweaty palms, overthinking, and the hedgehog dilemma.');
+('Romance','https://www.ungeek.ph/wp-content/uploads/2022/08/a_silent_voice_netflix-696x364.jpg', 'For the love of love, this genre is all about stomach butterflies, sweaty palms, overthinking, and the hedgehog dilemma');
 
 -- -----------------------------------------------------
 -- genres sample update statement
@@ -156,7 +156,8 @@ select * from anime inner join genres on anime.genre_id=genres.id
 -- -----------------------------------------------------
 -- users database SQL
 -- -----------------------------------------------------
-
+CREATE TABLE IF NOT EXISTS public.users
+(
     id bigint DEFAULT nextval('public.anime_id_seq'::regclass),
     first character varying(255) NOT NULL,
     last character varying(255) NOT NULL,
@@ -166,6 +167,3 @@ select * from anime inner join genres on anime.genre_id=genres.id
     created_at time with time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
-        DROP TABLE public.users;
-        CONSTRAINT ALTER TABLE ONLY public.users
-        ADD CONSTRAINT username UNIQUE (username);
