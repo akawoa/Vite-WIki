@@ -167,3 +167,39 @@ CREATE TABLE IF NOT EXISTS public.users
     created_at time with time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
+
+-- -----------------------------------------------------
+-- Products database SQL
+-- -----------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS public.products
+(
+    id bigserial NOT NULL,
+    product_name character varying(255),
+    product_image text,
+    product_description text,
+    product_price integer,
+    created_at timestamp with time zone DEFAULT current_timestamp,
+    updated_at timestamp with time zone DEFAULT now(),
+    PRIMARY KEY (id)
+);
+
+-- -----------------------------------------------------
+-- products pre-populated information
+-- -----------------------------------------------------
+
+
+INSERT INTO products(product_name, product_image, product_description, product_price)
+VALUES ('JuJutsu Kaisen Blu-Ray Set','https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dwbd1cb42e/rightstuf/782009247920_anime-jujutsu-kaisen-season-1-part-2-limited-edition-blu-ray-primary.jpg', 'Jujutsu Kaisen Season 1 Part 2 Limited Edition Blu-ray contains episodes 13-24 of the anime directed by Sung Hoo Park and includes a Soundtrack CD, Jujutsu Times Booklet, Anime Juju Sanpo Booklet, and 8 Art Cards.
+
+Jujutsu High is about to host its Kyoto Sister School Exchange Event—an annual competition of Tokyo and Kyoto Jujutsu High campuses. Fushiguro, Kugisaki, and second-years Maki, Toge, and Panda meet up to greet Todo and the other Kyoto students on arrival. Sparks immediately start to fly when Gojo rushes in late to the meetup.', 49.99),
+('Darling in the Franxx Blu-Ray Set','https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dw520300fd/rightstuf/704400020070_anime-Darling-in-the-FRANXX-Part-1-primary.jpg', 'In a battle against the klaxosaurs only the children, classified as parasites, are humanity''s hope in this dying world. Fighting in mechanized suits known as FRANXX, parasites are grouped up in male and female pairs to face the monstrous creatures. Hiro was once a prodigy FRANXX pilot. But when he gives up the fight, he meets Zero Two, the girl with the horns, and finds a new reason to keep going.', 48.74),
+('Horimiya Blu-Ray Set','https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dw31b8d7df/rightstuf/704400105784_anime-horimiya-blu-ray-dvd-primary.jpg', 'Hori is a prim social butterfly, but at home she''s a brash homebody. Meanwhile, under a gloomy facade and layers of clothes, Miyamura hides tattoos, piercings, and a kind heart. When these two meet, being themselves is as easy as falling in love.', 47.84),
+('Dragon Ball Z Season 1 Blu-Ray Set','https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dwac0ee02d/rightstuf/704400108983_anime-dragon-ball-z-season-1-blu-ray-primary.jpg', 'The Saiyans are coming! These ruthless, intergalactic villains carved a path of destruction across the galaxy, and now they''re headed for Earth. The evil Saiyan warlord Vegeta will not rest until he''s seized the wish-granting powers of the Dragon Balls for himself. Goku vs. Vegeta! The battle of all battles begins now!', 33.74),
+('Gurren Lagann Complete Box Set Blu-ray','https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dw7958a440/rightstuf/816546020743_anime-gurren-lagann-complete-box-set-blu-ray-primary.jpg', 'Gurren Lagann returns in a complete TV series and 2 movies in Blu-ray box set. One of the most cherished animation titles lives in your memory forever!
+
+This is the story of a man who has yet to realize what destiny holds in store for him….', 149.98),
+('Garden of Sinners Box Set Blu-Ray','https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dwba48c793/rightstuf/816546021474_anime-the-garden-of-sinners-box-set-blu-ray-alta.jpg', 'The Garden of Sinners contains movies 1-7 and Bonus: Final Chapter "The Garden of Sinners" all housed in a rigid box illustrated by Takashi Takeuchi along with a Deluxe 32-page Booklet.', 249.98),
+('Black Lagoon - The Complete Series - Classic - Blu-ray','https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dw6c6b6b4f/rightstuf/704400021558_anime-black-lagoon-complete-series-primary.jpg', 'Rokuro was an ordinary Japanese business man. A whipping boy for the big bosses and corporate high rollers. But when his job to deliver a mysterious disk goes south, a ruthless gang of mercenaries fronted by a gunslinging femme fatale take him into their custody. Abandoned and out of his element, the newly reinvented Rock joins up with his kidnappers as a smuggler of the East China Sea.', 52.49),
+('Outlaw Star - The Complete Series - Blu-ray','https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dwd9d9e97d/rightstuf/704400091490_anime-outlaw-star-blu-ray-dvd-primary.jpg', 'Gene Starwind is a jack-of-all-trades responsible for odd jobs and bounty hunting with his partner, Jim Hawking. Stuck on a rundown planet, he''s going nowhere fast. But when a bodyguard job goes sideways, he finds himself the proud owner of the Outlaw Star and on an adventure to find the mysterious Galactic Leyline. Facing pirates and dangers galore, can he survive the journey through space', 37.49),
+('My Hero Academia - Season 1 - Blu-ray','https://store.crunchyroll.com/on/demandware.static/-/Sites-crunchyroll-master-catalog/default/dw260fa466/rightstuf/704400097256_anime-My-Hero-Academia-season-1-blu-ray-dvd-primary.jpg', 'Despite being born powerless into a super-powered world, Izuku''s courage catches the eye of his ultimate idol, earning him a place among fellow young heroes. But this talented group of students is in for the test of a lifetime.', 48.74);

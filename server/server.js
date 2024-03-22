@@ -321,6 +321,99 @@ app.post("/api/v1/user/login", async (req, res) => {
   }
 });
 
+  // SERVER CALLS FOR PRODUCTS --------------------------------
+  //Delete a Product
+app.delete("/api/v1/product/:id", async (req, res) => {
+  const { id } = req.params;
+  console.log("req is equal to :" + req);
+  try {
+    const results = await db.query(`DELETE FROM products where id = ${id};`);
+    res.status(204).json({
+      status: "sucess",
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+// Create a Product
+app.post("/api/v1/product/new", async (req, res) => {
+  console.log(req.body);
+  try {
+    const results = await db.query(
+      "INSERT INTO products (product_name, product_image, product_description, product_price) values ($1, $2, $3,$4) returning *",
+      [req.body.product_name, req.body.product_image, req.body.product_description, req.body.product_price]
+    );
+    console.log(results);
+    res.status(201).json({
+      status: "success",
+      data: {
+        product: results.rows[0],
+      },
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+// Get all Products
+app.get("/api/v1/product", async (req, res) => {
+  try {
+    const productData = await db.query(
+      "select * from products ORDER BY product_name ASC;"
+    );
+    res.status(200).json({
+      status: "success",
+      results: productData.rows.length,
+      data: {
+        product: productData.rows,
+      },
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+// Get a Single Product By ID
+app.get("/api/v1/product/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const productData = await db.query(`select * from products where id = ${id};`);
+
+    res.status(200).json({
+      status: "success",
+      results: productData.rows.length,
+      data: {
+        product: productData.rows,
+      },
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+// Edit a Product
+app.put("/api/v1/product/:id/update", async (req, res) => {
+  const { id } = req.params;
+  console.log(req.body);
+
+  try {
+    const results = await db.query(
+      `UPDATE products SET product_name = $1, product_image = $2, product_description = $3, product_price = $4, where id = ${id} returning *;`,
+      [req.body.product_name, req.body.product_image, req.body.product_description,req.body.product_price]
+    );
+    console.log(results);
+    res.status(200).json({
+      status: "success",
+      data: {
+        product: results.rows[0],
+      },
+    });
+  } catch (err) {
+    console.log(err);
+  }
+}); 
+
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
   console.log(`server is up and listening on port ${port}`);

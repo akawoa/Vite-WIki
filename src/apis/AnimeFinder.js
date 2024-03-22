@@ -51,6 +51,9 @@ export const deleteAnimeCall = (id) => {
 export const deleteGenreCall = (id) => {
   return axios.delete(`http://localhost:3001/api/v1/genre/${id}`);
 };
+
+// USER API CALLS
+
 // API Axios Post Call to add a user.
 export const postUserAPICall = (data) => {
   return axios.post(`http://localhost:3001/api/v1/user/new`, data);
@@ -59,4 +62,27 @@ export const postUserAPICall = (data) => {
 // API Axios Post Call to check a user for Login.
 export const getUserAPICall = (data) => {
   return axios.post(`http://localhost:3001/api/v1/user/login`, data);
+};
+
+// PRODUCT API CALLS
+
+// API Axios Post Call to add a Product.
+export const postProductAPICall = (data) => {
+  return axios.post(`http://localhost:3001/api/v1/product/new`, data);
+};
+// API Axios Post Call to get a single Product.
+export const getSingleProductCall = (id) => {
+  return axios.get(`http://localhost:3001/api/v1/product/${id}`);
+};
+// API Axios Get Call for Products
+export const getAllProductCall = () => {
+  return axios.get("http://localhost:3001/api/v1/product");
+};
+// API Axios Put Call to edit a Product.
+export const editProductCall = (id, data) => {
+  return axios.put(`http://localhost:3001/api/v1/product/${id}/update`, data);
+};
+// API Axios Delete Call for a Product.
+export const deleteProductCall = (id) => {
+  return axios.delete(`http://localhost:3001/api/v1/product/${id}`);
 };

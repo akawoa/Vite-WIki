@@ -16,10 +16,13 @@ import UpdateGenre from "./routes/UpdateGenre";
 import GenrePage from "./routes/GenrePage";
 import ErrorPage from "./routes/ErrorPage";
 import AllAnimeList from "./routes/AllAnimeList";
+import ShopPage from "./routes/ShopPage";
+
 import SearchResultsPage from "./routes/SearchResultsPage";
 import { AnimeContextProvider } from "./context/AnimeContext";
 import { GenresContextProvider } from "./context/GenreContext";
 import { UsersContextProvider } from "./context/UserContext";
+import { ProductsContextProvider } from "./context/ProductContext";
 
 
 const App = (async) => {
@@ -28,6 +31,7 @@ const App = (async) => {
       <AnimeContextProvider>
         <GenresContextProvider>
           <UsersContextProvider>
+            <ProductsContextProvider>
             <BrowserRouter>
               <Switch>
                 <Route exact path="/">
@@ -63,11 +67,15 @@ const App = (async) => {
                 <Route exact path="/anime/genre/:id">
                   <GenrePage />
                 </Route>
+                <Route exact path="/shop">
+                  <ShopPage />
+                </Route>
                 <Route exact path="/error">
                   <ErrorPage />
                 </Route>
               </Switch>
             </BrowserRouter>
+            </ProductsContextProvider>
           </UsersContextProvider>
         </GenresContextProvider>
       </AnimeContextProvider>

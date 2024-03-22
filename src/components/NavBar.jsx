@@ -50,6 +50,9 @@ const NavBar = () => {
             Logout
           </Link>
         )}
+          <Link to={"/shop"} className="navbar-brand font-weight-bold shadow-sm p-3 mb-5 rounded navLink" tabindex='-1'>
+          Shop
+        </Link>
         </div>
         <div className="col-6 ">
         <SearchBar></SearchBar>
